@@ -471,7 +471,7 @@ tr.editing-row td{background:rgba(232,160,73,.06);border-left:2px solid var(--am
 }
 
 /* ═══════════════════════════════════════════════
-   BACKWARD COMPATIBILITY — clases antiguas Tect.aspx
+   BACKWARD COMPATIBILITY — clases antiguas Calificaciones.aspx
    Mapean a los nombres nuevos del diseño de referencia
 ═══════════════════════════════════════════════ */
 .panel-label{font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--amber);padding-bottom:10px;margin-bottom:16px;border-bottom:1px solid rgba(232,160,73,.35)}

@@ -1,0 +1,331 @@
+{
+  "Version": "1.0",
+  "FechaExportacion": "2026-06-15T11:11:00",
+  "Personas": [
+    {
+      "Matricula": "AB1001",
+      "Nombre": "Lucía Fernández",
+      "Materia": "Lenguaje de Programación 2",
+      "Parcial1": 20.0,
+      "Parcial2": 20.0,
+      "TP": 7.0,
+      "ExamenFinal": 45.5
+    },
+    {
+      "Matricula": "AB1001",
+      "Nombre": "Lucía Fernández",
+      "Materia": "Ética Personal",
+      "Parcial1": 20.0,
+      "Parcial2": 15.5,
+      "TP": 8.5,
+      "ExamenFinal": 42.5
+    },
+    {
+      "Matricula": "AB1002",
+      "Nombre": "Mateo González",
+      "Materia": "Historia y Filosofía de la Ciencia",
+      "Parcial1": 11.0,
+      "Parcial2": 8.5,
+      "TP": 5.5,
+      "ExamenFinal": 34.5
+    },
+    {
+      "Matricula": "AB1003",
+      "Nombre": "Valentina Ruiz",
+      "Materia": "Ética Personal",
+      "Parcial1": 17.0,
+      "Parcial2": 18.0,
+      "TP": 10.0,
+      "ExamenFinal": 43.5
+    },
+    {
+      "Matricula": "AB1004",
+      "Nombre": "Santiago Benítez",
+      "Materia": "Física 3",
+      "Parcial1": 13.5,
+      "Parcial2": 13.0,
+      "TP": 7.0,
+      "ExamenFinal": 49.0
+    },
+    {
+      "Matricula": "AB1004",
+      "Nombre": "Santiago Benítez",
+      "Materia": "Lenguaje de Programación 2",
+      "Parcial1": 16.5,
+      "Parcial2": 6.5,
+      "TP": 6.5,
+      "ExamenFinal": 35.0
+    },
+    {
+      "Matricula": "AB1005",
+      "Nombre": "Camila Ortiz",
+      "Materia": "Matemática para Informáticos",
+      "Parcial1": 10.0,
+      "Parcial2": 9.5,
+      "TP": 4.0,
+      "ExamenFinal": 22.5
+    },
+    {
+      "Matricula": "AB1006",
+      "Nombre": "Joaquín Romero",
+      "Materia": "Lenguaje de Programación 2",
+      "Parcial1": 18.5,
+      "Parcial2": 16.0,
+      "TP": 7.0,
+      "ExamenFinal": 43.0
+    },
+    {
+      "Matricula": "AB1007",
+      "Nombre": "Martina López",
+      "Materia": "Historia y Filosofía de la Ciencia",
+      "Parcial1": 20.0,
+      "Parcial2": 17.5,
+      "TP": 10.0,
+      "ExamenFinal": 43.5
+    },
+    {
+      "Matricula": "AB1007",
+      "Nombre": "Martina López",
+      "Materia": "Física 3",
+      "Parcial1": 17.0,
+      "Parcial2": 20.0,
+      "TP": 10.0,
+      "ExamenFinal": 42.0
+    },
+    {
+      "Matricula": "AB1008",
+      "Nombre": "Tomás Giménez",
+      "Materia": "Ética Personal",
+      "Parcial1": 9.0,
+      "Parcial2": 12.0,
+      "TP": 4.5,
+      "ExamenFinal": 27.0
+    },
+    {
+      "Matricula": "AB1009",
+      "Nombre": "Sofía Acosta",
+      "Materia": "Física 3",
+      "Parcial1": 20.0,
+      "Parcial2": 17.0,
+      "TP": 8.0,
+      "ExamenFinal": 37.0
+    },
+    {
+      "Matricula": "AB1010",
+      "Nombre": "Benjamín Duarte",
+      "Materia": "Matemática para Informáticos",
+      "Parcial1": 7.5,
+      "Parcial2": 10.0,
+      "TP": 5.0,
+      "ExamenFinal": 34.5
+    },
+    {
+      "Matricula": "AB1010",
+      "Nombre": "Benjamín Duarte",
+      "Materia": "Historia y Filosofía de la Ciencia",
+      "Parcial1": 8.0,
+      "Parcial2": 7.0,
+      "TP": 7.5,
+      "ExamenFinal": 20.5
+    },
+    {
+      "Matricula": "AB1011",
+      "Nombre": "Julieta Ramírez",
+      "Materia": "Lenguaje de Programación 2",
+      "Parcial1": 12.0,
+      "Parcial2": 13.5,
+      "TP": 7.0,
+      "ExamenFinal": 45.5
+    },
+    {
+      "Matricula": "AB1012",
+      "Nombre": "Nicolás Vera",
+      "Materia": "Historia y Filosofía de la Ciencia",
+      "Parcial1": 14.0,
+      "Parcial2": 11.5,
+      "TP": 7.0,
+      "ExamenFinal": 42.0
+    },
+    {
+      "Matricula": "AB1013",
+      "Nombre": "Agustina Cáceres",
+      "Materia": "Ética Personal",
+      "Parcial1": 19.0,
+      "Parcial2": 17.0,
+      "TP": 7.0,
+      "ExamenFinal": 37.5
+    },
+    {
+      "Matricula": "AB1013",
+      "Nombre": "Agustina Cáceres",
+      "Materia": "Matemática para Informáticos",
+      "Parcial1": 15.5,
+      "Parcial2": 17.0,
+      "TP": 7.5,
+      "ExamenFinal": 35.5
+    },
+    {
+      "Matricula": "AB1014",
+      "Nombre": "Franco Medina",
+      "Materia": "Física 3",
+      "Parcial1": 8.0,
+      "Parcial2": 4.5,
+      "TP": 5.0,
+      "ExamenFinal": 12.5
+    }
+  ],
+  "AuditLog": [
+    {
+      "Timestamp": "2026-06-15T09:03:00",
+      "Accion": "INSERT",
+      "Matricula": "AB1001",
+      "Nombre": "Lucía Fernández",
+      "Materia": "Lenguaje de Programación 2",
+      "Detalle": "P1=20.0 P2=20.0 TP=7.0 Final=45.5 Total=92.5"
+    },
+    {
+      "Timestamp": "2026-06-15T09:12:00",
+      "Accion": "INSERT",
+      "Matricula": "AB1001",
+      "Nombre": "Lucía Fernández",
+      "Materia": "Ética Personal",
+      "Detalle": "P1=20.0 P2=15.5 TP=8.5 Final=42.5 Total=86.5"
+    },
+    {
+      "Timestamp": "2026-06-15T09:15:00",
+      "Accion": "INSERT",
+      "Matricula": "AB1002",
+      "Nombre": "Mateo González",
+      "Materia": "Historia y Filosofía de la Ciencia",
+      "Detalle": "P1=11.0 P2=8.5 TP=5.5 Final=34.5 Total=59.5"
+    },
+    {
+      "Timestamp": "2026-06-15T09:24:00",
+      "Accion": "INSERT",
+      "Matricula": "AB1003",
+      "Nombre": "Valentina Ruiz",
+      "Materia": "Ética Personal",
+      "Detalle": "P1=17.0 P2=18.0 TP=10.0 Final=43.5 Total=88.5"
+    },
+    {
+      "Timestamp": "2026-06-15T09:31:00",
+      "Accion": "INSERT",
+      "Matricula": "AB1004",
+      "Nombre": "Santiago Benítez",
+      "Materia": "Física 3",
+      "Detalle": "P1=13.5 P2=13.0 TP=7.0 Final=49.0 Total=82.5"
+    },
+    {
+      "Timestamp": "2026-06-15T09:38:00",
+      "Accion": "INSERT",
+      "Matricula": "AB1004",
+      "Nombre": "Santiago Benítez",
+      "Materia": "Lenguaje de Programación 2",
+      "Detalle": "P1=16.5 P2=6.5 TP=6.5 Final=35.0 Total=64.5"
+    },
+    {
+      "Timestamp": "2026-06-15T09:44:00",
+      "Accion": "INSERT",
+      "Matricula": "AB1005",
+      "Nombre": "Camila Ortiz",
+      "Materia": "Matemática para Informáticos",
+      "Detalle": "P1=10.0 P2=9.5 TP=4.0 Final=22.5 Total=46.0"
+    },
+    {
+      "Timestamp": "2026-06-15T09:52:00",
+      "Accion": "INSERT",
+      "Matricula": "AB1006",
+      "Nombre": "Joaquín Romero",
+      "Materia": "Lenguaje de Programación 2",
+      "Detalle": "P1=18.5 P2=16.0 TP=7.0 Final=43.0 Total=84.5"
+    },
+    {
+      "Timestamp": "2026-06-15T10:01:00",
+      "Accion": "INSERT",
+      "Matricula": "AB1007",
+      "Nombre": "Martina López",
+      "Materia": "Historia y Filosofía de la Ciencia",
+      "Detalle": "P1=20.0 P2=17.5 TP=10.0 Final=43.5 Total=91.0"
+    },
+    {
+      "Timestamp": "2026-06-15T10:10:00",
+      "Accion": "INSERT",
+      "Matricula": "AB1007",
+      "Nombre": "Martina López",
+      "Materia": "Física 3",
+      "Detalle": "P1=17.0 P2=20.0 TP=10.0 Final=42.0 Total=89.0"
+    },
+    {
+      "Timestamp": "2026-06-15T10:12:00",
+      "Accion": "INSERT",
+      "Matricula": "AB1008",
+      "Nombre": "Tomás Giménez",
+      "Materia": "Ética Personal",
+      "Detalle": "P1=9.0 P2=12.0 TP=4.5 Final=27.0 Total=52.5"
+    },
+    {
+      "Timestamp": "2026-06-15T10:20:00",
+      "Accion": "INSERT",
+      "Matricula": "AB1009",
+      "Nombre": "Sofía Acosta",
+      "Materia": "Física 3",
+      "Detalle": "P1=20.0 P2=17.0 TP=8.0 Final=37.0 Total=82.0"
+    },
+    {
+      "Timestamp": "2026-06-15T10:29:00",
+      "Accion": "INSERT",
+      "Matricula": "AB1010",
+      "Nombre": "Benjamín Duarte",
+      "Materia": "Matemática para Informáticos",
+      "Detalle": "P1=7.5 P2=10.0 TP=5.0 Final=34.5 Total=57.0"
+    },
+    {
+      "Timestamp": "2026-06-15T10:35:00",
+      "Accion": "INSERT",
+      "Matricula": "AB1010",
+      "Nombre": "Benjamín Duarte",
+      "Materia": "Historia y Filosofía de la Ciencia",
+      "Detalle": "P1=8.0 P2=7.0 TP=7.5 Final=20.5 Total=43.0"
+    },
+    {
+      "Timestamp": "2026-06-15T10:44:00",
+      "Accion": "INSERT",
+      "Matricula": "AB1011",
+      "Nombre": "Julieta Ramírez",
+      "Materia": "Lenguaje de Programación 2",
+      "Detalle": "P1=12.0 P2=13.5 TP=7.0 Final=45.5 Total=78.0"
+    },
+    {
+      "Timestamp": "2026-06-15T10:46:00",
+      "Accion": "INSERT",
+      "Matricula": "AB1012",
+      "Nombre": "Nicolás Vera",
+      "Materia": "Historia y Filosofía de la Ciencia",
+      "Detalle": "P1=14.0 P2=11.5 TP=7.0 Final=42.0 Total=74.5"
+    },
+    {
+      "Timestamp": "2026-06-15T10:55:00",
+      "Accion": "INSERT",
+      "Matricula": "AB1013",
+      "Nombre": "Agustina Cáceres",
+      "Materia": "Ética Personal",
+      "Detalle": "P1=19.0 P2=17.0 TP=7.0 Final=37.5 Total=80.5"
+    },
+    {
+      "Timestamp": "2026-06-15T11:04:00",
+      "Accion": "INSERT",
+      "Matricula": "AB1013",
+      "Nombre": "Agustina Cáceres",
+      "Materia": "Matemática para Informáticos",
+      "Detalle": "P1=15.5 P2=17.0 TP=7.5 Final=35.5 Total=75.5"
+    },
+    {
+      "Timestamp": "2026-06-15T11:11:00",
+      "Accion": "INSERT",
+      "Matricula": "AB1014",
+      "Nombre": "Franco Medina",
+      "Materia": "Física 3",
+      "Detalle": "P1=8.0 P2=4.5 TP=5.0 Final=12.5 Total=30.0"
+    }
+  ]
+}

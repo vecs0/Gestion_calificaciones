@@ -11,7 +11,7 @@ namespace Datos
 {
 
 
-    public partial class Tect
+    public partial class Calificaciones
     {
 
         /// <summary>

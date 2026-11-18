@@ -1,0 +1,10 @@
+# Librerías de terceros instaladas por NuGet: no cuentan para las estadísticas de lenguaje
+Datos/Scripts/** linguist-vendored
+Datos/Content/bootstrap* linguist-vendored
+*.min.js linguist-vendored
+*.min.css linguist-vendored
+*.map linguist-generated
+
+# Archivos de Visual Studio con finales de línea de Windows
+*.sln text eol=crlf
+*.csproj text eol=crlf

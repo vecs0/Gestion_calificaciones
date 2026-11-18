@@ -239,7 +239,7 @@ pre.code-block .num  { color: #f78c6c; }
         <div class="tech-item"><span class="tech-name">AutoPostBack</span><span class="tech-version">true</span></div>
         <div class="tech-item"><span class="tech-name">OnTextChanged</span><span class="tech-version">txtSearch_Changed</span></div>
         <div class="tech-item"><span class="tech-name">LIKE %valor%</span><span class="tech-version">SQL filter</span></div>
-        <div class="tech-item"><span class="tech-name">Archivo</span><span class="tech-version">Tect.aspx.cs</span></div>
+        <div class="tech-item"><span class="tech-name">Archivo</span><span class="tech-version">Calificaciones.aspx.cs</span></div>
       </div>
     </div>
 
@@ -249,10 +249,10 @@ pre.code-block .num  { color: #f78c6c; }
         Paginación
       </div>
       <div class="tech-stack">
-        <div class="tech-item"><span class="tech-name">AllowPaging</span><span class="tech-version blue">true</span></div>
-        <div class="tech-item"><span class="tech-name">PageSize</span><span class="tech-version blue">10</span></div>
-        <div class="tech-item"><span class="tech-name">OnPageIndexChanging</span><span class="tech-version blue">evento</span></div>
-        <div class="tech-item"><span class="tech-name">Archivo</span><span class="tech-version blue">Tect.aspx</span></div>
+        <div class="tech-item"><span class="tech-name">Tipo</span><span class="tech-version blue">JavaScript en cliente</span></div>
+        <div class="tech-item"><span class="tech-name">PageSize</span><span class="tech-version blue">seleccionable (#grillaPageSize)</span></div>
+        <div class="tech-item"><span class="tech-name">Función</span><span class="tech-version blue">render()</span></div>
+        <div class="tech-item"><span class="tech-name">Archivo</span><span class="tech-version blue">Contact.aspx</span></div>
       </div>
     </div>
 
@@ -265,7 +265,7 @@ pre.code-block .num  { color: #f78c6c; }
         <div class="tech-item"><span class="tech-name">btnExportar_Click</span><span class="tech-version">Excel</span></div>
         <div class="tech-item"><span class="tech-name">btnCSV_Click</span><span class="tech-version">CSV</span></div>
         <div class="tech-item"><span class="tech-name">Respeta filtros</span><span class="tech-version">activos</span></div>
-        <div class="tech-item"><span class="tech-name">Archivo</span><span class="tech-version">Tect.aspx.cs</span></div>
+        <div class="tech-item"><span class="tech-name">Archivo</span><span class="tech-version">Calificaciones.aspx.cs</span></div>
       </div>
     </div>
 
@@ -274,10 +274,10 @@ pre.code-block .num  { color: #f78c6c; }
   <!-- Código de referencia -->
   <div class="code-section fade-up fade-up-3">
     <div class="code-section-header">
-      <span class="code-section-title">GridView — atributos clave (Tect.aspx)</span>
+      <span class="code-section-title">GridView — ejemplo de referencia con paginación del servidor</span>
       <span class="code-lang">ASP.NET / C#</span>
     </div>
-    <pre class="code-block"><span class="cmt">&lt;!-- Atributos en el GridView de Tect.aspx --&gt;</span>
+    <pre class="code-block"><span class="cmt">&lt;!-- Ejemplo de referencia: así se activa la paginación nativa de un GridView --&gt;</span>
 <span class="prop">&lt;asp:GridView</span> <span class="kw">ID</span>=<span class="str">"GridView1"</span> <span class="kw">runat</span>=<span class="str">"server"</span>
   <span class="kw">AllowPaging</span>=<span class="str">"True"</span>
   <span class="kw">PageSize</span>=<span class="str">"10"</span>
@@ -297,7 +297,7 @@ pre.code-block .num  { color: #f78c6c; }
 
 <span class="prop">&lt;/asp:GridView&gt;</span>
 
-<span class="cmt">// Tect.aspx.cs — Ordenamiento</span>
+<span class="cmt">// Calificaciones.aspx.cs — Ordenamiento</span>
 <span class="kw">protected void</span> GridView1_Sorting(<span class="kw">object</span> sender, GridViewSortEventArgs e)
 {
     <span class="kw">string</span> sortExp  = e.SortExpression;
@@ -318,7 +318,7 @@ pre.code-block .num  { color: #f78c6c; }
 
 <script>
 // @ts-nocheck
-// ── Datos desde Session (Tect.aspx) o vacío ──────────────────
+// ── Datos desde Session (Calificaciones.aspx) o vacío ──────────────────
 var DEMO_DATA = typeof SESSION_DATA !== 'undefined' && SESSION_DATA.length > 0
   ? SESSION_DATA
   : [];

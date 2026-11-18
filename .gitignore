@@ -21,3 +21,8 @@ Thumbs.db
 # npm
 node_modules/
 package-lock.json
+
+# Publicación
+publish/
+release/
+*.pubxml.user

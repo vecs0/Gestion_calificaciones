@@ -839,7 +839,7 @@ body.light-theme .table-panel {
   cursor: pointer !important;
 }
 
-/* ── Backward compat: Tect.aspx classes ── */
+/* ── Backward compat: Calificaciones.aspx classes ── */
 .btn-submit {
   background: var(--c-amber) !important;
   background-color: var(--c-amber) !important;
@@ -873,7 +873,7 @@ body.light-theme .table-panel {
   border: 1px solid var(--c-border2) !important;
 }
 
-/* tbtn-* aliases for Tect.aspx */
+/* tbtn-* aliases for Calificaciones.aspx */
 .tbtn-ghost  { background: transparent !important; border: 1px solid var(--c-border2) !important; color: var(--c-muted) !important; }
 .tbtn-green  { background: transparent !important; border: 1px solid #4caf52 !important; color: #4caf52 !important; }
 .tbtn-green:hover  { background: rgba(76,175,82,0.10) !important; }

@@ -272,9 +272,8 @@ pre.code-block .val  { color: var(--teal); }
     <a class="docs-nav-link" href="#stack"><span class="ndot"></span>Stack tecnológico</a>
     <a class="docs-nav-link" href="#arquitectura"><span class="ndot"></span>Arquitectura</a>
 
-    <div class="docs-nav-group-title">Base de datos</div>
-    <a class="docs-nav-link" href="#schema"><span class="ndot"></span>Esquema BD</a>
-    <a class="docs-nav-link" href="#procedimientos"><span class="ndot"></span>Procedimientos</a>
+    <div class="docs-nav-group-title">Datos</div>
+    <a class="docs-nav-link" href="#almacenamiento"><span class="ndot"></span>Almacenamiento</a>
 
     <div class="docs-nav-group-title">Negocio</div>
     <a class="docs-nav-link" href="#calculos"><span class="ndot"></span>Cálculos</a>
@@ -302,14 +301,14 @@ pre.code-block .val  { color: var(--teal); }
       </div>
       <div>
         <div class="hero-title">Listas Genéricas 2026 — Documentación</div>
-        <div class="hero-sub">Sistema de Gestión Académica · .NET Framework 4.7.2 · ASP.NET WebForms · SQL LocalDB</div>
+        <div class="hero-sub">Sistema de Gestión Académica · .NET Framework 4.7.2 · ASP.NET WebForms · Datos en sesión</div>
       </div>
     </div>
 
     <div class="note tip" style="margin-bottom:24px">
       <span>💡</span>
       <span>Documentación completa del proyecto <strong>Listas Genéricas 2026</strong>. Incluye stack,
-      arquitectura 3 capas, esquema de base de datos, lógica de negocio, y las 10 mejoras implementadas.</span>
+      arquitectura 3 capas, almacenamiento de datos, lógica de negocio, y las 10 mejoras implementadas.</span>
     </div>
 
     <%-- ════ RESUMEN ════ --%>
@@ -357,8 +356,8 @@ pre.code-block .val  { color: var(--teal); }
         </div>
         <div class="doc-mini-card">
           <div class="mc-icon purple">DB</div>
-          <div class="mc-label">Base de datos</div>
-          <div class="mc-val">SQL LocalDB</div>
+          <div class="mc-label">Datos</div>
+          <div class="mc-val">Session + JSON</div>
         </div>
       </div>
 
@@ -389,7 +388,7 @@ pre.code-block .val  { color: var(--teal); }
       <p class="doc-p">
         Arquitectura <strong>3 capas</strong> clásica: <strong>Presentación</strong> (ASPX + Site.Master),
         <strong>Lógica de Negocio</strong> (BLL con Fachada, DTOs, Servicios),
-        <strong>Datos</strong> (SQL Server LocalDB con procedimientos almacenados).
+        <strong>Datos</strong> (listas genéricas <code>List&lt;T&gt;</code> guardadas en la <code>Session</code> de ASP.NET, con respaldo y restauración en JSON).
       </p>
 
       <div class="code-wrap">
@@ -401,14 +400,14 @@ pre.code-block .val  { color: var(--teal); }
 ├── 📁 Datos                    <span class="cmt">// Capa de Presentación</span>
 │   ├── Site.Master             <span class="cmt">// Layout global</span>
 │   ├── Default.aspx            <span class="cmt">// Página de inicio</span>
-│   ├── Tect.aspx               <span class="cmt">// UI principal (GridView)</span>
-│   ├── Tect.aspx.cs            <span class="cmt">// Code-behind con eventos</span>
+│   ├── Calificaciones.aspx               <span class="cmt">// UI principal (GridView)</span>
+│   ├── Calificaciones.aspx.cs            <span class="cmt">// Code-behind con eventos</span>
 │   ├── Contact.aspx            <span class="cmt">// Grilla de Ordenamiento (doc)</span>
 │   ├── About.aspx              <span class="cmt">// Documentación</span>
 │   ├── Content/
 │   │   ├── site-rediseno.css   <span class="cmt">// Estilos globales</span>
 │   │   └── bootstrap/          <span class="cmt">// Bootstrap 5.2.3</span>
-│   └── Web.config              <span class="cmt">// Conexión LocalDB + appSettings</span>
+│   └── Web.config              <span class="cmt">// Configuración: cultura es-AR, sesión, compilación</span>
 │
 ├── 📁 BLL                      <span class="cmt">// Capa de Negocio</span>
 │   ├── Fachada/
@@ -426,85 +425,50 @@ pre.code-block .val  { color: var(--teal); }
 
     <div class="doc-divider"></div>
 
-    <%-- ════ ESQUEMA BD ════ --%>
-    <section class="doc-section" id="schema">
+    <%-- ════ ALMACENAMIENTO ════ --%>
+    <section class="doc-section" id="almacenamiento">
       <h2 class="doc-section-title">
         <span class="ds-icon blue">🗄</span>
-        Esquema de base de datos
+        Almacenamiento de datos
       </h2>
 
       <p class="doc-p">
-        Base de datos <strong>ListasGenericas2026</strong> en SQL Server LocalDB (<code>(localdb)\mssqllocaldb</code>).
-        Dos tablas principales:
-      </p>
-
-      <h3 class="doc-h3">Tabla Personas</h3>
-      <div class="code-wrap">
-        <div class="code-hdr">
-          <span class="code-lang sql">SQL</span>
-          <span class="code-file">CREATE TABLE Personas</span>
-        </div>
-        <pre class="code-block"><span class="kw">CREATE TABLE</span> Personas (
-    Id           <span class="kw2">INT</span>          <span class="kw">IDENTITY(1,1) PRIMARY KEY</span>,
-    Matricula    <span class="kw2">NVARCHAR(50)</span>  <span class="kw">NOT NULL</span>,
-    Nombre       <span class="kw2">NVARCHAR(150)</span> <span class="kw">NOT NULL</span>,
-    Materia      <span class="kw2">NVARCHAR(100)</span> <span class="kw">NOT NULL</span>,
-    Parcial1     <span class="kw2">DECIMAL(4,2)</span> <span class="kw">NOT NULL</span>,
-    Parcial2     <span class="kw2">DECIMAL(4,2)</span> <span class="kw">NOT NULL</span>,
-    TP           <span class="kw2">DECIMAL(4,2)</span> <span class="kw">NOT NULL</span>,
-    ExamenFinal  <span class="kw2">DECIMAL(5,2)</span> <span class="kw">NOT NULL</span>,
-    Total        <span class="kw2">DECIMAL(5,2)</span> <span class="kw">NOT NULL</span>,
-    Promedio     <span class="kw2">DECIMAL(4,2)</span> <span class="kw">NOT NULL</span>,
-    FechaRegistro <span class="kw2">DATETIME2</span>   <span class="kw">NOT NULL</span>
-);</pre>
-      </div>
-
-      <h3 class="doc-h3">Tabla AuditLog</h3>
-      <div class="code-wrap">
-        <div class="code-hdr">
-          <span class="code-lang sql">SQL</span>
-          <span class="code-file">CREATE TABLE AuditLog</span>
-        </div>
-        <pre class="code-block"><span class="kw">CREATE TABLE</span> AuditLog (
-    Id         <span class="kw2">INT</span>          <span class="kw">IDENTITY(1,1) PRIMARY KEY</span>,
-    Accion     <span class="kw2">NVARCHAR(20)</span>  <span class="kw">NOT NULL</span>,           <span class="cmt">-- INSERT / UPDATE / DELETE</span>
-    Matricula  <span class="kw2">NVARCHAR(50)</span>  <span class="kw">NOT NULL</span>,
-    Nombre     <span class="kw2">NVARCHAR(150)</span> <span class="kw">NOT NULL</span>,
-    Detalle    <span class="kw2">NVARCHAR(500)</span> <span class="kw">NULL</span>,
-    Usuario    <span class="kw2">NVARCHAR(100)</span> <span class="kw">NULL</span>,
-    FechaHora  <span class="kw2">DATETIME2</span>    <span class="kw">NOT NULL</span>
-);</pre>
-      </div>
-    </section>
-
-    <%-- ════ PROCEDIMIENTOS ════ --%>
-    <section class="doc-section" id="procedimientos">
-      <h2 class="doc-section-title">
-        <span class="ds-icon purple">⚡</span>
-        Procedimientos almacenados
-      </h2>
-
-      <p class="doc-p">
-        Todos los accesos a datos se realizan mediante <strong>procedimientos almacenados</strong>
-        en lugar de SQL inline, mejorando seguridad y mantenibilidad.
+        El sistema no usa una base de datos: trabaja con <strong>listas genéricas en memoria</strong>
+        (<code>List&lt;InfoDatosPersonales&gt;</code> y <code>List&lt;AuditEntry&gt;</code>) guardadas en la
+        <code>Session</code> de ASP.NET. Los datos viven mientras dure la sesión del navegador.
       </p>
 
       <div class="ref-table-wrap">
         <table class="ref-table">
           <thead>
-            <tr><th>Procedimiento</th><th>Función</th></tr>
+            <tr><th>Clave de sesión</th><th>Contenido</th></tr>
           </thead>
           <tbody>
-            <tr><td><code>Personas_Insert</code></td><td>Inserta nueva persona</td></tr>
-            <tr><td><code>Personas_Update</code></td><td>Actualiza datos existentes</td></tr>
-            <tr><td><code>Personas_Delete</code></td><td>Elimina registro por Id</td></tr>
-            <tr><td><code>Personas_GetAll</code></td><td>Obtiene todas las personas</td></tr>
-            <tr><td><code>Personas_GetByMatricula</code></td><td>Busca por matrícula</td></tr>
-            <tr><td><code>AuditLog_Insert</code></td><td>Registra evento de auditoría</td></tr>
-            <tr><td><code>AuditLog_GetAll</code></td><td>Obtiene historial de auditoría</td></tr>
-            <tr><td><code>AuditLog_GetStats</code></td><td>Estadísticas por tipo de operación</td></tr>
+            <tr><td><code>Session["ListaPersonas"]</code></td><td>Registros de estudiantes con sus calificaciones por materia</td></tr>
+            <tr><td><code>Session["AuditLog"]</code></td><td>Historial de operaciones INSERT / UPDATE / DELETE</td></tr>
           </tbody>
         </table>
+      </div>
+
+      <h3 class="doc-h3">Respaldo y restauración en JSON</h3>
+      <p class="doc-p">
+        Para no perder el trabajo, la sesión completa (alumnos + auditoría) se puede exportar a un archivo
+        JSON y volver a cargar más tarde. El snapshot se modela con el DTO <code>SesionBackup</code> y se
+        serializa con <strong>Newtonsoft.Json</strong>.
+      </p>
+      <div class="code-wrap">
+        <div class="code-hdr">
+          <span class="code-lang csharp">C#</span>
+          <span class="code-file">BLL/DTO/SesionBackup.cs</span>
+        </div>
+        <pre class="code-block">[<span class="kw2">Serializable</span>]
+<span class="kw">public class</span> SesionBackup
+{
+    <span class="kw">public</span> <span class="kw2">string</span> Version { <span class="kw">get</span>; <span class="kw">set</span>; } = <span class="str">"1.0"</span>;
+    <span class="kw">public</span> <span class="kw2">DateTime</span> FechaExportacion { <span class="kw">get</span>; <span class="kw">set</span>; }
+    <span class="kw">public</span> <span class="kw2">List</span>&lt;InfoDatosPersonales&gt; Personas { <span class="kw">get</span>; <span class="kw">set</span>; }
+    <span class="kw">public</span> <span class="kw2">List</span>&lt;AuditEntry&gt; AuditLog { <span class="kw">get</span>; <span class="kw">set</span>; }
+}</pre>
       </div>
     </section>
 
@@ -527,29 +491,33 @@ pre.code-block .val  { color: var(--teal); }
           <span class="code-lang csharp">C#</span>
           <span class="code-file">BLL/Fachada/Calculos.cs</span>
         </div>
-        <pre class="code-block"><span class="cmt">// Calcula Total = P1 + P2 + TP + ExamenFinal</span>
-<span class="kw">public static decimal</span> CalcularTotal(<span class="kw2">decimal</span> p1, <span class="kw2">decimal</span> p2,
-    <span class="kw2">decimal</span> tp, <span class="kw2">decimal</span> ef)
-    => p1 + p2 + tp + ef;
-
-<span class="cmt">// Calcula Promedio = Total / 20 (escala 0-5)</span>
-<span class="kw">public static decimal</span> CalcularPromedio(<span class="kw2">decimal</span> total)
-    => Math.Round(total / <span class="num">20m</span>, <span class="num">2</span>);
-
-<span class="cmt">// Convierte promedio numérico a letra</span>
-<span class="kw">public static string</span> ObtenerNotaFinalLetras(<span class="kw2">decimal</span> promedio)
+        <pre class="code-block"><span class="cmt">// Total = P1 + P2 + TP + Examen final (máximo 100)</span>
+<span class="kw">public static decimal</span> CalcularTotal(<span class="kw2">decimal</span> parcial1, <span class="kw2">decimal</span> parcial2, <span class="kw2">decimal</span> tp, <span class="kw2">decimal</span> examenFinal)
 {
-    <span class="kw">if</span> (promedio &lt; <span class="num">1m</span>)  <span class="kw">return</span> <span class="str">"Malo"</span>;
-    <span class="kw">if</span> (promedio &lt; <span class="num">2m</span>)  <span class="kw">return</span> <span class="str">"Deficiente"</span>;
-    <span class="kw">if</span> (promedio &lt; <span class="num">3m</span>)  <span class="kw">return</span> <span class="str">"Regular"</span>;
-    <span class="kw">if</span> (promedio &lt; <span class="num">4m</span>)  <span class="kw">return</span> <span class="str">"Bueno"</span>;
-    <span class="kw">if</span> (promedio &lt; <span class="num">5m</span>)  <span class="kw">return</span> <span class="str">"Excelente"</span>;
-    <span class="kw">return</span> <span class="str">"Excelente"</span>;
+    <span class="kw">return</span> parcial1 + parcial2 + tp + examenFinal;
 }
 
-<span class="cmt">// Determina situación académica</span>
-<span class="kw">public static string</span> ObtenerSituacion(<span class="kw2">decimal</span> promedio)
-    => promedio >= <span class="num">2m</span> ? <span class="str">"Aprobado"</span> : <span class="str">"Reprobado"</span>;</pre>
+<span class="cmt">// Promedio en escala 0–5: (Total / 100) × 5</span>
+<span class="kw">public static decimal</span> CalcularPromedio(<span class="kw2">decimal</span> total)
+{
+    <span class="kw">return</span> Math.Round((total / <span class="num">100m</span>) * <span class="num">5m</span>, <span class="num">2</span>);
+}
+
+<span class="cmt">// Nota final en palabras (escala 1–5, redondeo por punto medio)</span>
+<span class="kw">public static string</span> ObtenerNotaFinalLetras(<span class="kw2">decimal</span> notaFinal)
+{
+    <span class="kw">if</span> (notaFinal >= <span class="num">4.5m</span>) <span class="kw">return</span> <span class="str">"Cinco"</span>;
+    <span class="kw">else if</span> (notaFinal >= <span class="num">3.5m</span>) <span class="kw">return</span> <span class="str">"Cuatro"</span>;
+    <span class="kw">else if</span> (notaFinal >= <span class="num">2.5m</span>) <span class="kw">return</span> <span class="str">"Tres"</span>;
+    <span class="kw">else if</span> (notaFinal >= <span class="num">1.5m</span>) <span class="kw">return</span> <span class="str">"Dos"</span>;
+    <span class="kw">else</span> <span class="kw">return</span> <span class="str">"Uno"</span>;
+}
+
+<span class="cmt">// Aprobado con nota ≥ 3 (equivale al 60% del puntaje máximo)</span>
+<span class="kw">public static string</span> ObtenerSituacion(<span class="kw2">decimal</span> notaFinal)
+{
+    <span class="kw">return</span> notaFinal >= <span class="num">3m</span> ? <span class="str">"Aprobado"</span> : <span class="str">"Reprobado"</span>;
+}</pre>
       </div>
     </section>
 
@@ -589,22 +557,20 @@ pre.code-block .val  { color: var(--teal); }
           <span class="code-lang csharp">C#</span>
           <span class="code-file">BLL/Fachada/AuditLogger.cs</span>
         </div>
-        <pre class="code-block"><span class="kw">public static void</span> Registrar(<span class="kw2">string</span> accion, <span class="kw2">string</span> matricula,
-    <span class="kw2">string</span> nombre, <span class="kw2">string</span> detalle)
+        <pre class="code-block"><span class="kw">private static void</span> Agregar(<span class="kw2">dynamic</span> session, <span class="kw2">string</span> accion,
+    InfoDatosPersonales persona, <span class="kw2">string</span> detalle)
 {
-    <span class="kw">using var</span> conn = <span class="kw">new</span> SqlConnection(Config.Cnn);
-    <span class="kw">using var</span> cmd = <span class="kw">new</span> SqlCommand(<span class="str">"AuditLog_Insert"</span>, conn);
-    cmd.CommandType = CommandType.StoredProcedure;
-
-    cmd.Parameters.AddWithValue(<span class="str">"@Accion"</span>, accion);
-    cmd.Parameters.AddWithValue(<span class="str">"@Matricula"</span>, matricula);
-    cmd.Parameters.AddWithValue(<span class="str">"@Nombre"</span>, nombre);
-    cmd.Parameters.AddWithValue(<span class="str">"@Detalle"</span>, detalle);
-    cmd.Parameters.AddWithValue(<span class="str">"@Usuario"</span>,
-        HttpContext.Current?.User?.Identity?.Name ?? <span class="str">"Sistema"</span>);
-
-    conn.Open();
-    cmd.ExecuteNonQuery();
+    <span class="kw">var</span> lista = ObtenerEntradas(session);
+    lista.Add(<span class="kw">new</span> AuditEntry
+    {
+        Timestamp = <span class="kw2">DateTime</span>.Now,
+        Accion    = accion,
+        Matricula = persona?.Matricula ?? <span class="kw2">string</span>.Empty,
+        Nombre    = persona?.Nombre    ?? <span class="kw2">string</span>.Empty,
+        Materia   = persona?.Materia   ?? <span class="kw2">string</span>.Empty,
+        Detalle   = detalle
+    });
+    session[<span class="str">"AuditLog"</span>] = lista;
 }</pre>
       </div>
     </section>
@@ -655,9 +621,9 @@ pre.code-block .val  { color: var(--teal); }
         <table class="ref-table">
           <thead><tr><th>Archivo</th><th>Línea</th><th>Función</th></tr></thead>
           <tbody>
-            <tr><td><code>Datos\Tect.aspx</code></td><td>98–115</td><td>&lt;style&gt; — CSS del mosaico (.mosaic-grid/row/cells/cell/count/pct/legend)</td></tr>
-            <tr><td><code>Datos\Tect.aspx</code></td><td>373–393</td><td>HTML del panel .chart-panel con #mosaicGrid y leyenda</td></tr>
-            <tr><td><code>Datos\Tect.aspx</code></td><td>~510–700</td><td>JS inicializarGrafico() — lee GridView, extrae promedios, renderiza mosaico</td></tr>
+            <tr><td><code>Datos\Calificaciones.aspx</code></td><td>98–115</td><td>&lt;style&gt; — CSS del mosaico (.mosaic-grid/row/cells/cell/count/pct/legend)</td></tr>
+            <tr><td><code>Datos\Calificaciones.aspx</code></td><td>373–393</td><td>HTML del panel .chart-panel con #mosaicGrid y leyenda</td></tr>
+            <tr><td><code>Datos\Calificaciones.aspx</code></td><td>~510–700</td><td>JS inicializarGrafico() — lee GridView, extrae promedios, renderiza mosaico</td></tr>
             <tr><td><code>Datos\Content\site-override.css</code></td><td>~1380–1425</td><td>CSS base del mosaico con !important</td></tr>
           </tbody>
         </table>
@@ -679,7 +645,7 @@ pre.code-block .val  { color: var(--teal); }
       <div class="code-wrap">
         <div class="code-hdr">
           <span class="code-lang aspx">JavaScript</span>
-          <span class="code-file">Datos\Tect.aspx — inicializarGrafico()</span>
+          <span class="code-file">Datos\Calificaciones.aspx — inicializarGrafico()</span>
         </div>
         <pre class="code-block"><span class="kw">var</span> CONFIG = [
   &#123; label: <span class="str">'0–1'</span>, color: <span class="str">'#e05555'</span> &#125;,   <span class="cmt">// rojo</span>
@@ -721,7 +687,7 @@ pre.code-block .val  { color: var(--teal); }
       <div class="code-wrap">
         <div class="code-hdr">
           <span class="code-lang aspx">Flujo</span>
-          <span class="code-file">Datos\Tect.aspx.cs + AuditLogger.cs</span>
+          <span class="code-file">Datos\Calificaciones.aspx.cs + AuditLogger.cs</span>
         </div>
         <pre class="code-block"><span class="cmt">// 1. El usuario acciona INSERT / UPDATE / DELETE</span>
 btn_Click()           → AuditLogger.RegistrarInsercion(Session, info)
@@ -753,10 +719,10 @@ session[<span class="str">"AuditLog"</span>] = lista;   <span class="cmt">// Lis
         <table class="ref-table">
           <thead><tr><th>Archivo</th><th>Línea</th><th>Función</th></tr></thead>
           <tbody>
-            <tr><td><code>Datos\Tect.aspx</code></td><td>395–409</td><td>HTML — .section-panel › #auditHeader › #auditPanel.history-body › litAuditEntries</td></tr>
-            <tr><td><code>Datos\Tect.aspx</code></td><td>~725–733</td><td>JS toggleAudit() — colapsar/expandir #auditPanel</td></tr>
-            <tr><td><code>Datos\Tect.aspx.cs</code></td><td>43–46</td><td>Page_PreRender → litAuditEntries.Text = RenderAuditEntries()</td></tr>
-            <tr><td><code>Datos\Tect.aspx.cs</code></td><td>642–672</td><td>RenderAuditEntries() — genera HTML de los history-items</td></tr>
+            <tr><td><code>Datos\Calificaciones.aspx</code></td><td>395–409</td><td>HTML — .section-panel › #auditHeader › #auditPanel.history-body › litAuditEntries</td></tr>
+            <tr><td><code>Datos\Calificaciones.aspx</code></td><td>~725–733</td><td>JS toggleAudit() — colapsar/expandir #auditPanel</td></tr>
+            <tr><td><code>Datos\Calificaciones.aspx.cs</code></td><td>43–46</td><td>Page_PreRender → litAuditEntries.Text = RenderAuditEntries()</td></tr>
+            <tr><td><code>Datos\Calificaciones.aspx.cs</code></td><td>642–672</td><td>RenderAuditEntries() — genera HTML de los history-items</td></tr>
             <tr><td><code>BLL\Fachada\AuditLogger.cs</code></td><td>214–245</td><td>ObtenerUltimas(session, 5) — ordena por Timestamp desc</td></tr>
             <tr><td><code>BLL\Fachada\AuditLogger.cs</code></td><td>157–173</td><td>Agregar() — añade AuditEntry a Session["AuditLog"]</td></tr>
             <tr><td><code>Datos\Content\site-override.css</code></td><td>1427–1505</td><td>Sección 17 — CSS .history-panel/.header/.body/.item/.h-dot/.h-action/.h-detail/.h-time</td></tr>
@@ -797,7 +763,7 @@ session[<span class="str">"AuditLog"</span>] = lista;   <span class="cmt">// Lis
           <span class="code-lang aspx">Checklist</span>
           <span class="code-file">Estado: ✅ Build OK — sin errores</span>
         </div>
-        <pre class="code-block"> <span class="num">1</span>  Paginación              — AllowPaging=true · 10 reg/pág · GridDatos
+        <pre class="code-block"> <span class="num">1</span>  Ordenamiento            — DdlOrden + ChkAscendente · GridDatos
  <span class="num">2</span>  RangeValidator          — Validación por campo: P1/P2 0–20, TP 0–10, EF 0–50
  <span class="num">3</span>  Columna Situación       — TemplateField · Aprobado / Reprobado con colores
  <span class="num">4</span>  Desglose auditoría      — strip INSERT / UPDATE / DELETE en tiempo real
@@ -832,7 +798,7 @@ session[<span class="str">"AuditLog"</span>] = lista;   <span class="cmt">// Lis
       </h2>
 
       <p class="doc-p">
-        Última iteración sobre <code>Tect.aspx</code> / <code>Tect.aspx.cs</code>: ahora un mismo
+        Última iteración sobre <code>Calificaciones.aspx</code> / <code>Calificaciones.aspx.cs</code>: ahora un mismo
         estudiante (misma <strong>Matrícula</strong>) puede tener un registro por cada
         <strong>materia</strong> que cursa, la grilla lo indica con un badge y un popover de cambio
         rápido, el perfil del alumno muestra todas sus materias juntas, y los paneles inferiores se
@@ -950,7 +916,7 @@ session[<span class="str">"AuditLog"</span>] = lista;   <span class="cmt">// Lis
           antes.<br><br>
           <strong>Comparación por Materia</strong> — el panel completo, junto con
           <code>RenderComparacionMaterias()</code> y su CSS (<code>.materia-bar-row/track/fill/...</code>)
-          en <code>Tect.aspx</code> / <code>Tect.aspx.cs</code>, el método
+          en <code>Calificaciones.aspx</code> / <code>Calificaciones.aspx.cs</code>, el método
           <code>PersonasService.CalcularEstadisticasPorMateria()</code> y el DTO
           <code>BLL\DTO\EstadisticasMateria.cs</code> fueron eliminados por completo. El espacio que
           ocupaba se reasignó a <strong>Estadísticas de la Clase</strong> y a los paneles vecinos.
@@ -970,14 +936,14 @@ session[<span class="str">"AuditLog"</span>] = lista;   <span class="cmt">// Lis
         <table class="ref-table">
           <thead><tr><th>Archivo</th><th>Elemento</th><th>Rol</th></tr></thead>
           <tbody>
-            <tr><td><code>Datos\Tect.aspx</code></td><td>aplicarBadgesMultiMateria() / agregarBadgeMultiMateria()</td><td>Agrupa filas por matrícula y agrega el badge</td></tr>
-            <tr><td><code>Datos\Tect.aspx</code></td><td>mostrarPopoverMaterias()</td><td>Popover flotante + swap de fila visible, sin postback</td></tr>
-            <tr><td><code>Datos\Tect.aspx</code></td><td>.multi-materia-badge / .materia-popover / .pop-*</td><td>CSS del badge y del popover</td></tr>
-            <tr><td><code>Datos\Tect.aspx</code></td><td>.tb-actions--stack / .tb-actions-row</td><td>Toolbar de "Registros de Estudiantes" en 2 filas</td></tr>
-            <tr><td><code>Datos\Tect.aspx</code></td><td>.bottom-grid / .chart-panel / .section-panel / #auditPanel / .stats-3col</td><td>Paneles inferiores compactos con scroll interno</td></tr>
-            <tr><td><code>Datos\Tect.aspx.cs</code></td><td>GridDatos_RowDataBound</td><td>Agrega data-matricula / data-materia a cada &lt;tr&gt;</td></tr>
-            <tr><td><code>Datos\Tect.aspx.cs</code></td><td>GridDatos_RowCommand</td><td>Parsea CommandArgument "Matricula|Materia"</td></tr>
-            <tr><td><code>Datos\Tect.aspx.cs</code></td><td>MostrarPerfilAlumno()</td><td>Renderiza .perfil-materia-section por cada materia del alumno</td></tr>
+            <tr><td><code>Datos\Calificaciones.aspx</code></td><td>aplicarBadgesMultiMateria() / agregarBadgeMultiMateria()</td><td>Agrupa filas por matrícula y agrega el badge</td></tr>
+            <tr><td><code>Datos\Calificaciones.aspx</code></td><td>mostrarPopoverMaterias()</td><td>Popover flotante + swap de fila visible, sin postback</td></tr>
+            <tr><td><code>Datos\Calificaciones.aspx</code></td><td>.multi-materia-badge / .materia-popover / .pop-*</td><td>CSS del badge y del popover</td></tr>
+            <tr><td><code>Datos\Calificaciones.aspx</code></td><td>.tb-actions--stack / .tb-actions-row</td><td>Toolbar de "Registros de Estudiantes" en 2 filas</td></tr>
+            <tr><td><code>Datos\Calificaciones.aspx</code></td><td>.bottom-grid / .chart-panel / .section-panel / #auditPanel / .stats-3col</td><td>Paneles inferiores compactos con scroll interno</td></tr>
+            <tr><td><code>Datos\Calificaciones.aspx.cs</code></td><td>GridDatos_RowDataBound</td><td>Agrega data-matricula / data-materia a cada &lt;tr&gt;</td></tr>
+            <tr><td><code>Datos\Calificaciones.aspx.cs</code></td><td>GridDatos_RowCommand</td><td>Parsea CommandArgument "Matricula|Materia"</td></tr>
+            <tr><td><code>Datos\Calificaciones.aspx.cs</code></td><td>MostrarPerfilAlumno()</td><td>Renderiza .perfil-materia-section por cada materia del alumno</td></tr>
             <tr><td><code>BLL\Fachada\AuditLogger.cs</code></td><td>ObtenerPorMatriculaYMateria()</td><td>Historial filtrado por matrícula + materia</td></tr>
           </tbody>
         </table>

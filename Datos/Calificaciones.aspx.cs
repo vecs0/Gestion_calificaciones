@@ -18,7 +18,7 @@ using Newtonsoft.Json;
 
 namespace Datos
 {
-    public partial class Tect : System.Web.UI.Page
+    public partial class Calificaciones : System.Web.UI.Page
     {
         private readonly PersonasService _personasService = new PersonasService();
 

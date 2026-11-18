@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
+    <title><%: Page.Title %> · Gestión de Calificaciones</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -123,7 +123,7 @@
                 <li class="nav-sep" aria-hidden="true" role="separator"></li>
 
                 <li class="nav-item">
-                  <a class="nav-link nav-badge" runat="server" href="~/Tect" id="navSistema">
+                  <a class="nav-link nav-badge" runat="server" href="~/Calificaciones" id="navSistema">
                     <span class="nav-badge-dot" aria-hidden="true"></span>
                     Sistema de Calificaciones
                   </a>
@@ -166,14 +166,16 @@
             { id: 'navInicio',  patterns: ['/default', '/home', '/'] },
             { id: 'navDocs',    patterns: ['/about'] },
             { id: 'navGrilla',  patterns: ['/contact'] },
-            { id: 'navSistema', patterns: ['/tect', '/calificaciones'] }
+            { id: 'navSistema', patterns: ['/calificaciones'] }
         ];
 
         map.forEach(function (item) {
             var el = document.getElementById(item.id);
             if (!el) return;
             var match = item.patterns.some(function (p) {
-                return path === p || path.indexOf(p) !== -1;
+                // '/' solo debe coincidir con la portada exacta (antes coincidía con todas las rutas)
+                if (p === '/') return path === '/';
+                return path === p || path.indexOf(p) === 0;
             });
             if (match) {
                 el.classList.add('nav-active');
