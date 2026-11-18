@@ -804,14 +804,14 @@ namespace Datos
                 {
                     LblPromedioClase.Text = estadisticas.PromedioClase.ToString("0.00");
                     LblMejorCalificacion.Text = estadisticas.MejorCalificacion.ToString("0.0");
-                    LblAlumnoMejor.Text = estadisticas.AlumnoMejorCalificacion;
-                    LblMateriaMejor.Text = estadisticas.MateriaMejorCalificacion;
+                    LblAlumnoMejor.Text = HttpUtility.HtmlEncode(estadisticas.AlumnoMejorCalificacion);
+                    LblMateriaMejor.Text = HttpUtility.HtmlEncode(estadisticas.MateriaMejorCalificacion);
                     LblSituacionMejor.Text = GetSituacionText(estadisticas.SituacionMejorCalificacion);
                     LblSituacionMejor.CssClass = GetSituacionClass(estadisticas.SituacionMejorCalificacion);
 
                     LblPeorCalificacion.Text = estadisticas.PeorCalificacion.ToString("0.0");
-                    LblAlumnoPeor.Text = estadisticas.AlumnoPeorCalificacion;
-                    LblMateriaPeor.Text = estadisticas.MateriaPeorCalificacion;
+                    LblAlumnoPeor.Text = HttpUtility.HtmlEncode(estadisticas.AlumnoPeorCalificacion);
+                    LblMateriaPeor.Text = HttpUtility.HtmlEncode(estadisticas.MateriaPeorCalificacion);
                     if (!string.IsNullOrEmpty(estadisticas.SituacionPeorCalificacion))
                     {
                         LblSituacionPeor.Text = GetSituacionText(estadisticas.SituacionPeorCalificacion);
@@ -1171,7 +1171,7 @@ namespace Datos
                 string cls = e.Accion == "INSERT" ? "ins" : e.Accion == "UPDATE" ? "upd" : "del";
                 html.Append("<div class=\"history-item\">");
                 html.AppendFormat("<div class=\"h-dot {0}\"></div>", cls);
-                html.AppendFormat("<div class=\"h-action {0}\">{1}</div>", cls, e.Accion);
+                html.AppendFormat("<div class=\"h-action {0}\">{1}</div>", cls, HttpUtility.HtmlEncode(e.Accion));
                 html.AppendFormat("<div class=\"h-detail\">{0} &middot; {1} &middot; {2}</div>",
                     System.Web.HttpUtility.HtmlEncode(e.Nombre),
                     System.Web.HttpUtility.HtmlEncode(e.Materia),
